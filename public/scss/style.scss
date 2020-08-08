@@ -68,6 +68,10 @@ body {
 		padding: 10px 20px;
 		font-size: 20px;
 		border-bottom: 1px solid #494949;
+
+		&:last-child {
+			border: none;
+		}
 	}
 }
 

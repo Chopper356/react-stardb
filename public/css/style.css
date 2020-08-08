@@ -74,6 +74,10 @@ body {
   border-bottom: 1px solid #494949;
 }
 
+.item-list .item-name:last-child {
+  border: none;
+}
+
 .info-list {
   display: flex;
   justify-content: space-between;
