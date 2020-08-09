@@ -14,15 +14,25 @@ body {
 
 .header .menu {
   display: flex;
-  justify-content: space-between;
 }
 
 .header .menu .list {
+  margin-left: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 400px;
+  width: 220px;
   margin-right: 300px;
+  cursor: pointer;
+}
+
+.header .menu .list div {
+  transition: all 0.25s;
+  font-size: 18px;
+}
+
+.header .menu .list div:hover {
+  color: #e74c3c;
 }
 
 .case {
@@ -113,4 +123,25 @@ body {
 
 .person-details .person-info .info span {
   font-size: 18px;
+}
+
+.error {
+  width: 400px;
+  margin: auto;
+  text-align: center;
+}
+
+.error img {
+  height: 100px;
+}
+
+.error h1 {
+  padding-top: 10px;
+  font-weight: bold;
+  color: #e74c3c;
+}
+
+.error .text {
+  color: #e74c3c;
+  padding-top: 5px;
 }
