@@ -6,6 +6,17 @@ import ItemList from "../item-list/"
 import PersonDetails from "../person-details/"
 
 class App extends React.Component {
+
+	state = {
+		selectedPerson: 1
+	}
+
+	onPersonSelected = (id) => {
+		this.setState({
+			selectedPerson: id
+		});
+	}
+
 	render() {
 		return (
 			<div className="wrapper">
@@ -13,9 +24,9 @@ class App extends React.Component {
 				<RandomPlanet />
 
 				<div className="info-list">
-					<ItemList />
+					<ItemList onItemSelected={ this.onPersonSelected }/>
 					<div className="details">
-						<PersonDetails />
+						<PersonDetails personId={ this.state.selectedPerson }/>
 					</div>
 				</div>
 			</div>

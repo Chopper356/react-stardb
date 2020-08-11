@@ -14,9 +14,9 @@ class RandomPlanet extends React.Component {
 		error: false
 	}
 
-	constructor() {
-		super();
+	componentDidMount() {
 		this.updatePlanet();
+		setInterval(() => this.updatePlanet(), 5000);
 	}
 
 	onPlanetLoaded = (planet) => {
@@ -30,7 +30,7 @@ class RandomPlanet extends React.Component {
 		});
 	}
 
-	updatePlanet() {
+	updatePlanet = () => {
 		const id = Math.round(Math.random()*25) + 1;
 
 		this.swapiSerwice.getPlanet(id).then(this.onPlanetLoaded).catch(this.onError);
@@ -41,18 +41,21 @@ class RandomPlanet extends React.Component {
 			<div className="case">
 				{ this.state.error && <Error /> }
 				{ this.state.loading && <Spinner /> }
-				{ !this.state.loading && !this.state.error && <RandomPlanetDetails planet={ this.state.planet }/> }
+				{ !this.state.loading && !this.state.error && <RandomPlanetDetails planet={ this.state.planet } updatePlanet={ () => this.updatePlanet }/> }
 			</div>
 		)
 	}
 }
 
-const RandomPlanetDetails = ({ planet }) => (
+const RandomPlanetDetails = ({ planet, updatePlanet }) => (
 	<>
 		<img src={`https://starwars-visualguide.com/assets/img/planets/${ planet.id }.jpg`} alt="Planet" />
 
 		<div className="planet-info">
-			<h1 className="planet-name">{ planet.name }</h1>
+			<div className="header">
+				<h1 className="planet-name">{ planet.name }</h1>
+				<i onClick={ updatePlanet() } className="fas fa-redo-alt"></i>
+			</div>
 			<div className="info population">Population: <span>{ planet.population }</span></div>
 			<div className="info rotation">Rotation Period: <span></span>{ planet.rotationPeriod }</div>
 			<div className="info diameter">Diameter: <span></span>{ planet.diameter }</div>

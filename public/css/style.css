@@ -4,7 +4,7 @@ body {
 
 .wrapper {
   margin: auto;
-  width: 1440px;
+  width: 1000px;
 }
 
 .header {
@@ -46,15 +46,29 @@ body {
 
 .case img {
   height: 200px;
+  width: 200px;
   border-radius: 20px;
+  background-color: #494949;
 }
 
 .case .planet-info {
   margin-left: 30px;
+  width: 300px;
 }
 
-.case .planet-info h1 {
+.case .planet-info .header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.case .planet-info .header h1 {
   font-size: 30px;
+}
+
+.case .planet-info .header i {
+  font-size: 20px;
+  color: #3498db;
+  cursor: pointer;
 }
 
 .case .planet-info .info {
@@ -75,13 +89,26 @@ body {
   border-radius: 10px;
   box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.2);
   padding: 10px;
-  width: 65%;
+  width: 50%;
+  position: relative;
+}
+
+.item-list .spin {
+  position: absolute;
+  top: 30%;
+  left: 50%;
 }
 
 .item-list .item-name {
   padding: 10px 20px;
   font-size: 20px;
   border-bottom: 1px solid #494949;
+  border-radius: 5px;
+  transition: all 0.2s;
+}
+
+.item-list .item-name:hover {
+  background-color: #5d5d5d;
 }
 
 .item-list .item-name:last-child {
@@ -101,6 +128,7 @@ body {
   box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.2);
   margin-top: 50px;
   width: 400px;
+  height: 240px;
 }
 
 .person-details img {
