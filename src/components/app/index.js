@@ -2,33 +2,31 @@ import React from "react"
 
 import Header from "../header/"
 import RandomPlanet from "../random-planet/"
-import ItemList from "../item-list/"
-import PersonDetails from "../person-details/"
+import PeoplePage from "../people-page/"
+import Error from "../error/"
 
 class App extends React.Component {
 
 	state = {
-		selectedPerson: 1
+		hasError: false
 	}
 
-	onPersonSelected = (id) => {
-		this.setState({
-			selectedPerson: id
-		});
+	componentDidCatch() {
+		this.setState({ hasError: true });
 	}
 
 	render() {
+
+		if (this.state.hasError) {
+			return <Error />
+		}
+
 		return (
 			<div className="wrapper">
 				<Header />
 				<RandomPlanet />
 
-				<div className="info-list">
-					<ItemList onItemSelected={ this.onPersonSelected }/>
-					<div className="details">
-						<PersonDetails personId={ this.state.selectedPerson }/>
-					</div>
-				</div>
+				<PeoplePage />
 			</div>
 		)
 	}
