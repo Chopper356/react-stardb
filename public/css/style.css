@@ -4,7 +4,7 @@ body {
 
 .wrapper {
   margin: auto;
-  width: 1000px;
+  width: 1200px;
 }
 
 .header {
@@ -132,8 +132,9 @@ body {
 }
 
 .person-details img {
-  height: 200px;
-  border-radius: 20px;
+  display: block;
+  max-width: 50%;
+  height: auto;
 }
 
 .person-details .person-info {

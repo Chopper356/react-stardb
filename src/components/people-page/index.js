@@ -1,19 +1,20 @@
 import React from "react"
 
 import ItemList from "../item-list/"
-import PersonDetails from "../person-details/"
+import ItemDetails from "../item-details"
 import Error from "../error/"
+import SwapiSerwice from "../../services/swapi-service"
+import Row from "../row/"
+import ErrorBoundry from "../errorBoundry/"
 
 class PeoplePage extends React.Component {
 	
+	swapiService = new SwapiSerwice();
+
 	state = {
-		selectedPerson: 1,
-		hasError: false
+		selectedPerson: 1
 	}
 
-	componentDidCatch() {
-		this.setState({ hasError: true });
-	}
 
 	onPersonSelected = (id) => {
 		this.setState({
@@ -27,13 +28,23 @@ class PeoplePage extends React.Component {
 			return <Error />
 		}
 
+		
+		const itemList = (
+			<ItemList 
+				onItemSelected={ this.onPersonSelected }
+				getData={ this.swapiService.getAllPeople }>
+
+				{(item) => `${item.name} - ( Birth Year: ${item.birthYear} )`}				
+			</ItemList>
+		);
+		const personDetails = (
+			<ErrorBoundry>
+				<ItemDetails itemId={ this.state.selectedPerson }/>
+			</ErrorBoundry>
+		);
+
 		return (
-			<div className="info-list">
-					<ItemList onItemSelected={ this.onPersonSelected }/>
-					<div className="details">
-						<PersonDetails personId={ this.state.selectedPerson }/>
-					</div>
-				</div>
+			<Row left={ itemList } right={ personDetails }/>
 		)
 	}
 }

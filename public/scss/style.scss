@@ -3,7 +3,7 @@ body {
 }
 .wrapper {
 	margin: auto;
-	width: 1000px;
+	width: 1200px;
 }
 .header {
 	width: 100%;
@@ -128,8 +128,9 @@ body {
 	height: 240px;
 
 	img {
-		height: 200px;
-		border-radius: 20px;
+		display: block;
+		max-width: 50%;
+		height: auto;
 	}
 
 	.person-info {
