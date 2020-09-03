@@ -52,8 +52,6 @@ class ItemDetails extends React.Component {
 
 	render() {
 
-		// const {name, gender, birthYear, eyeColor} = this.state.item
-
 		if (!this.state.item) {
 			return (
 				<div>Select person</div>

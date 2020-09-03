@@ -6,8 +6,18 @@ import RandomPlanet from "../random-planet/"
 import Error from "../error/"
 import SwapiSerwice from "../../services/swapi-service"
 import ErrorBoundry from "../errorBoundry/"
-import ItemDetails, { Record } from "../item-details/"
-import Row from "../row/"
+// import ItemDetails, { Record } from "../item-details/"
+// import ItemList from "../item-list/"
+// import Row from "../row/"
+
+import {
+	PlanetDetails,
+	PersonDetails,
+	StarshipDetails,
+	PlanetList,
+	PersonList,
+	StarshipList
+} from "../sw-components"
 
 class App extends React.Component {
 
@@ -27,29 +37,21 @@ class App extends React.Component {
 			return <Error />
 		}
 
-		const { getPerson, getStarship, getPersonImage, getStarshipImage } = this.swapiService
-
-		const personDetails = (
-				<ItemDetails getData={ getPerson } itemId={12} getImageUrl={ getPersonImage }>
-					<Record field="gender" label="Gender" />
-					<Record field="eyeColor" label="Eye Color" />
-				</ItemDetails>
-		)
-
-		const starshipDetails = (
-				<ItemDetails getData={ getStarship } itemId={12} getImageUrl={ getStarshipImage }>
-					<Record field="model" label="Model" />
-					<Record field="length" label="Length" />
-					<Record field="costInCredits" label="Cost" />	
-				</ItemDetails>
-		)
 		return (
 			<ErrorBoundry>
 				<div className="wrapper">
 					<Header />
 					<RandomPlanet />
 
-					<Row left={ personDetails } right={ starshipDetails }/>
+					<PersonDetails itemId={11} />
+					<PlanetDetails itemId={5} />
+					<StarshipDetails itemId={5} />
+
+					<PersonList onItemSelected={() => {}} />
+
+					<PlanetList onItemSelected={() => {}} />
+						
+					<StarshipList onItemSelected={() => {}} />
 				</div>
 			</ErrorBoundry>
 		)
