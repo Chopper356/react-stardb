@@ -6,6 +6,7 @@ import RandomPlanet from "../random-planet/"
 import Error from "../error/"
 import SwapiSerwice from "../../services/swapi-service"
 import ErrorBoundry from "../errorBoundry/"
+import { SwapiServiceProvider } from "../swapi-service-context/"
 // import ItemDetails, { Record } from "../item-details/"
 // import ItemList from "../item-list/"
 // import Row from "../row/"
@@ -39,20 +40,22 @@ class App extends React.Component {
 
 		return (
 			<ErrorBoundry>
-				<div className="wrapper">
-					<Header />
-					<RandomPlanet />
+				<SwapiServiceProvider value={ this.swapiService }>
+					<div className="wrapper">
+						<Header />
+						<RandomPlanet />
 
-					<PersonDetails itemId={11} />
-					<PlanetDetails itemId={5} />
-					<StarshipDetails itemId={5} />
+						<PersonDetails itemId={11} />
+						<PlanetDetails itemId={5} />
+						<StarshipDetails itemId={5} />
 
-					<PersonList onItemSelected={() => {}} />
+						<PersonList onItemSelected={() => {}} />
 
-					<PlanetList onItemSelected={() => {}} />
-						
-					<StarshipList onItemSelected={() => {}} />
-				</div>
+						<PlanetList onItemSelected={() => {}} />
+							
+						<StarshipList onItemSelected={() => {}} />
+					</div>
+				</SwapiServiceProvider>
 			</ErrorBoundry>
 		)
 	}

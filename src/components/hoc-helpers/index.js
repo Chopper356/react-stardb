@@ -1,7 +1,7 @@
 import React from "react"
 
-import Spinner from "../spinner/"
-import ErrorIndicator from "../errorBoundry/"
+import Spinner from "../spinner"
+// import ErrorIndicator from "../errorBoundry/"
 
 export const withData = (View, getData) => {
 	
